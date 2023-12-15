@@ -9,10 +9,6 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = var.region
-}
-
 module "vpc" {
   source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
 }
