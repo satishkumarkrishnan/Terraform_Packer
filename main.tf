@@ -14,7 +14,7 @@ module "vpc" {
 }
 
 
-resource "aws_vpc" "vpc" {
+/*resource "aws_vpc" "vpc" {
   cidr_block           = module.vpc.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -86,10 +86,11 @@ resource "aws_instance" "web" {
   instance_type               = "t2.micro"
   #subnet_id                   = aws_subnet.subnet_public.id  
   subnet_id                   = module.vpc.vpc_fe_subnet.id  
-  vpc_security_group_ids      = [aws_security_group.sg_22_80.id]
+  vpc_security_group_ids      = [module.vpc.vpc_fe_sg]
   associate_public_ip_address = true
 
   tags = {
     Name = "Learn-Packer"
   }
-}
+  depends_on = [module.vpc]
+}*/
