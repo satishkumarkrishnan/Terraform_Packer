@@ -79,7 +79,7 @@ resource "aws_security_group" "sg_22_80" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
+}*/
 
 resource "aws_instance" "web" {
   ami                         = "ami-0c20d1e87e986f2cc"
@@ -93,4 +93,4 @@ resource "aws_instance" "web" {
     Name = "Learn-Packer"
   }
   depends_on = [module.vpc]
-}*/
+}
