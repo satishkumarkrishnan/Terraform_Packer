@@ -78,7 +78,7 @@ resource "aws_security_group" "sg_22_80" {
 }*/
 
 resource "aws_instance" "web" {
-  ami                         = "ami-0390577299ac81e41"
+  ami                         = "ami-06f6d78bffeb889bb"
   instance_type               = "t2.micro"
   subnet_id                   = module.vpc.vpc_fe_subnet.id  
   vpc_security_group_ids      = [module.vpc.vpc_fe_sg]
