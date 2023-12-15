@@ -9,11 +9,6 @@ terraform {
 }
 
 
-/*module "vpc" {
-  source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
-}*/
-
-
 resource "aws_vpc" "vpc" {
   cidr_block           = var.cidr_vpc
   enable_dns_support   = true
