@@ -1,11 +1,12 @@
 terraform {
+  required_version = ">= 1.0.0, < 2.0.0"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.42.0"
+      version = "5.2.0"
     }
   }
-  required_version = ">= 0.14.5"
 }
 
 module "vpc" {
@@ -14,37 +15,40 @@ module "vpc" {
 
 
 resource "aws_vpc" "vpc" {
-  cidr_block           = var.cidr_vpc
+  cidr_block           = module.vpc.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc.id
+  #vpc_id = aws_vpc.vpc.id
+  vpc_id = module.vpc.vpc_id
+  
 }
 
 resource "aws_subnet" "subnet_public" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = var.cidr_subnet
+  vpc_id     = module.vpc.vpc_id
+  cidr_block = module.vpc.vpc_fe_subnet.id
+  
 }
 
 resource "aws_route_table" "rtb_public" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = module.vpc.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    gateway_id = module.vpc.vpc_ig
   }
 }
 
 resource "aws_route_table_association" "rta_subnet_public" {
-  subnet_id      = aws_subnet.subnet_public.id
-  route_table_id = aws_route_table.rtb_public.id
+  subnet_id      = module.vpc.vpc_fe_subnet.id
+  route_table_id = module.vpc.vpc_rt
 }
 
 resource "aws_security_group" "sg_22_80" {
   name   = "sg_22"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = module.vpc.vpc_id
 
   # SSH access from the VPC
   ingress {
