@@ -1,6 +1,6 @@
 variable "region" {
   description = "AWS region"
-  default     = "ap-east-1"
+  default     = "ap-northeast-1"
 }
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
