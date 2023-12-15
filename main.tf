@@ -28,7 +28,8 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "subnet_public" {
   vpc_id     = module.vpc.vpc_id
-  cidr_block = module.vpc.vpc_fe_subnet.id
+  #cidr_block = module.vpc.vpc_fe_subnet.id
+  cidr_block = "10.1.0.0/24"
   
 }
 
