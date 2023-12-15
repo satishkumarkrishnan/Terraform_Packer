@@ -81,7 +81,7 @@ resource "aws_security_group" "sg_22_80" {
   }
 }*/
 
-/*resource "aws_instance" "web" {
+resource "aws_instance" "web" {
   ami                         = "ami-0c20d1e87e986f2cc"
   instance_type               = "t2.micro"
   #subnet_id                   = aws_subnet.subnet_public.id  
@@ -93,4 +93,4 @@ resource "aws_security_group" "sg_22_80" {
     Name = "Tokyo-Packer"
   }
   depends_on = [module.vpc]
-}*/
+}
