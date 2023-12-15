@@ -90,7 +90,7 @@ resource "aws_instance" "web" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "Learn-Packer"
+    Name = "Tokyo-Packer"
   }
   depends_on = [module.vpc]
 }
