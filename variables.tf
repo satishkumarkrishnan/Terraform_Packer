@@ -5,7 +5,7 @@ variable "region" {
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-/*variable "cidr_vpc" {
+variable "cidr_vpc" {
   description = "CIDR block for the VPC"
   default     = "10.1.0.0/16"
 }
@@ -21,5 +21,5 @@ variable "environment_tag" {
 
 variable "region"{
   description = "The region Terraform deploys your instance"
-}*/
+}
 
