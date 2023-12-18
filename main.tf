@@ -13,8 +13,7 @@ module "vpc" {
   source ="git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"
 }
 
-
-
+#Added a new resource
 resource "aws_instance" "web" {
   ami                         = "ami-0c20d1e87e986f2cc"
   instance_type               = "t2.micro"
